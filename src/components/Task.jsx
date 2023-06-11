@@ -1,8 +1,26 @@
 import { VscTrash } from "react-icons/vsc";
 import { FiEdit } from "react-icons/fi";
+import { useState } from "react";
 
+export function Task({ task, handleClickDelete, handleClickEdit }) {
+  const [isEditing, setIsEditing] = useState(false);
+  const [isChecked, setIsChecked] = useState(false);
 
-export function Task({task}) {
+  const handleCheckboxChange = () => {
+    setIsChecked(!isChecked);
+  };
+
+  function handleEdit(){
+    setIsEditing(true)
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    let form = Object.fromEntries(new window.FormData(event.target));
+    handleClickEdit(form.editTask, task)
+    setIsEditing(false)
+  }
+
   return (
     <li
       style={{
@@ -14,18 +32,44 @@ export function Task({task}) {
         padding: "0px 1.2em",
       }}
     >
-      <div style={{ display: "flex", alignItems: "center", gap: "5px" }}>
+      <form
+        onSubmit={handleSubmit}
+        style={{ display: "flex", alignItems: "center", gap: "5px" }}
+      >
         <label
           htmlFor="checkBox"
           style={{ display: "flex", alignItems: "center" }}
         >
-          <input type="checkbox" id="checkBox" style={{ margin: "0px" }} />
+          <input
+            onChange={handleCheckboxChange}
+            type="checkbox"
+            id="checkBox"
+            checked={isChecked}
+            style={{ margin: "0px" }}
+          />
         </label>
-        <p style={{ marginBottom: "20px" }}>{task}</p>
-      </div>
+        {isEditing ? (
+          <input name="editTask" placeholder={task} />
+        ) : (
+          <p
+            style={{
+              marginBottom: "20px",
+              textDecoration: isChecked ? "line-through" : "",
+            }}
+          >
+            {task}
+          </p>
+        )}
+      </form>
       <div style={{ display: "flex", gap: "10px" }}>
-        <FiEdit style={{ color: "#7cb0ff" }} />
-        <VscTrash style={{ color: "#f5636a" }} />
+        <FiEdit
+          onClick={handleEdit}
+          style={{ color: "#7cb0ff", cursor: "pointer" }}
+        />
+        <VscTrash
+          onClick={() => handleClickDelete(task)}
+          style={{ color: "#f5636a", cursor: "pointer" }}
+        />
       </div>
     </li>
   );

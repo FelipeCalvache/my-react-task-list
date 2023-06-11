@@ -6,12 +6,12 @@ import { Header } from './components/Header'
 import { TasksList } from './components/TasksList'
 
 function App() {
-const [tasks, setTasks] = useState(['tarea1'])
+const [tasks, setTasks] = useState([])
 
   return (
     <main style={{minWidth: '500px'}}>
-    <Header setTasks={setTasks}/>
-    <TasksList tasks={tasks}/>
+    <Header tasks={tasks} setTasks={setTasks}/>
+    <TasksList tasks={tasks} setTasks={setTasks}/>
     <Footer/>
     </main>
   )
