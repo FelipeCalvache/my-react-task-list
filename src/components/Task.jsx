@@ -2,12 +2,15 @@ import { VscTrash } from "react-icons/vsc";
 import { FiEdit } from "react-icons/fi";
 import { useState } from "react";
 
-export function Task({ task, handleClickDelete, handleClickEdit }) {
+export function Task({ task, handleClickDelete, handleClickEdit, setPendingTasks, pendingTasks }) {
   const [isEditing, setIsEditing] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
 
   const handleCheckboxChange = () => {
     setIsChecked(!isChecked);
+    isChecked
+      ? setPendingTasks(pendingTasks + 1)
+      : setPendingTasks(pendingTasks - 1); 
   };
 
   function handleEdit(){
@@ -42,14 +45,23 @@ export function Task({ task, handleClickDelete, handleClickEdit }) {
         >
           <input
             onChange={handleCheckboxChange}
-            type="checkbox"
+            type="radio"
             id="checkBox"
             checked={isChecked}
-            style={{ margin: "0px" }}
+            style={{ margin: "0px", width:'20px' }}
           />
         </label>
         {isEditing ? (
-          <input name="editTask" placeholder={task} />
+          <input
+            name="editTask"
+            defaultValue={task}
+            style={{
+              height: "50px",
+              border: "none",
+              backgroundColor: "#e2e2e2",
+              outline:'none'
+            }}
+          />
         ) : (
           <p
             style={{
@@ -67,7 +79,7 @@ export function Task({ task, handleClickDelete, handleClickEdit }) {
           style={{ color: "#7cb0ff", cursor: "pointer" }}
         />
         <VscTrash
-          onClick={() => handleClickDelete(task)}
+          onClick={() => handleClickDelete(task, isChecked)}
           style={{ color: "#f5636a", cursor: "pointer" }}
         />
       </div>

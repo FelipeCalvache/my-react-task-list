@@ -1,9 +1,11 @@
-export function Header({ tasks, setTasks }) {
+export function Header({ tasks, setTasks, setPendingTasks, pendingTasks }) {
   function handleSubmit(event) {
     event.preventDefault();
     let form = Object.fromEntries(new window.FormData(event.target));
+    if(form.task === ''){return}
     setTasks([...tasks, form.task]);
     event.target.reset();
+    setPendingTasks(pendingTasks+1);
   }
 
   return (
@@ -23,6 +25,7 @@ export function Header({ tasks, setTasks }) {
         <input
           name="task"
           placeholder="Add your new todo"
+
           style={{
             height: "100%",
             width: "100%",
@@ -30,9 +33,13 @@ export function Header({ tasks, setTasks }) {
             borderRadius: "8px",
             padding: "0px 1.2em",
             display: "block",
+            outline: "none",
           }}
         ></input>
-        <button type="submit" style={{ height: "100%" }}>
+        <button
+          type="submit"
+          style={{ height: "100%", backgroundColor: "#08ebfc" }}
+        >
           +
         </button>
       </form>
