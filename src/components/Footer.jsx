@@ -15,7 +15,8 @@ export function Footer({ setTasks, pendingTasks, setPendingTasks }) {
       <p>You have {pendingTasks} pending tasks</p>
       <button
         onClick={handleClick}
-        style={{ backgroundColor: "#f82056", border: "none" }}
+        style={{ backgroundColor: "#f82056", border: "none", outline:'none' }}
+        
       >
         Clear all
       </button>

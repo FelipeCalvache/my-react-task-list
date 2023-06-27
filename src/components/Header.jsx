@@ -38,7 +38,7 @@ export function Header({ tasks, setTasks, setPendingTasks, pendingTasks }) {
         ></input>
         <button
           type="submit"
-          style={{ height: "100%", backgroundColor: "#08ebfc" }}
+          style={{ height: "100%", backgroundColor: "#08ebfc", outline:'none' }}
         >
           +
         </button>
