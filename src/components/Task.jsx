@@ -2,27 +2,34 @@ import { VscTrash } from "react-icons/vsc";
 import { FiEdit } from "react-icons/fi";
 import { useState } from "react";
 
-export function Task({ task, handleClickDelete, handleClickEdit, setPendingTasks, pendingTasks }) {
+export function Task({
+  task,
+  handleClickDelete,
+  handleClickEdit,
+  setPendingTasks,
+  pendingTasks,
+}) {
   const [isEditing, setIsEditing] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
 
+
   const handleCheckboxChange = () => {
-    console.log("isCheked "+isChecked)
+    console.log("isCheked " + isChecked);
     setIsChecked(!isChecked);
     isChecked
       ? setPendingTasks(pendingTasks + 1)
-      : setPendingTasks(pendingTasks - 1); 
+      : setPendingTasks(pendingTasks - 1);
   };
 
-  function handleEdit(){
-    setIsEditing(true)
+  function handleEdit() {
+    setIsEditing(!isEditing);
   }
 
   function handleSubmit(event) {
     event.preventDefault();
     let form = Object.fromEntries(new window.FormData(event.target));
-    handleClickEdit(form.editTask, task)
-    setIsEditing(false)
+    handleClickEdit(form.editTask, task);
+    setIsEditing(false);
   }
 
   return (
@@ -50,18 +57,24 @@ export function Task({ task, handleClickDelete, handleClickEdit, setPendingTasks
             id="checkBox"
             checked={isChecked}
             readOnly
-            style={{ margin: "0px", width: "20px", ra }}
+            style={{ margin: "0px", width: "20px" }}
           />
         </label>
         {isEditing ? (
           <input
             name="editTask"
+            type="text"
             defaultValue={task}
+            autoFocus
             style={{
-              height: "50px",
+              height: "58px",
               border: "none",
               backgroundColor: "#e2e2e2",
               outline: "none",
+              fontSize: "16px",
+              fontFamily:
+                "Inter, system-ui, Avenir, Helvetica, Arial, sans-serif",
+              fontStyle: "italic",
             }}
           />
         ) : (
