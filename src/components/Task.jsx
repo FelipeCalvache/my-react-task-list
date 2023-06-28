@@ -14,7 +14,6 @@ export function Task({
 
 
   const handleCheckboxChange = () => {
-    console.log("isCheked " + isChecked);
     setIsChecked(!isChecked);
     isChecked
       ? setPendingTasks(pendingTasks + 1)
