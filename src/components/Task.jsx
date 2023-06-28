@@ -7,6 +7,7 @@ export function Task({ task, handleClickDelete, handleClickEdit, setPendingTasks
   const [isChecked, setIsChecked] = useState(false);
 
   const handleCheckboxChange = () => {
+    console.log("isCheked "+isChecked)
     setIsChecked(!isChecked);
     isChecked
       ? setPendingTasks(pendingTasks + 1)
@@ -44,11 +45,12 @@ export function Task({ task, handleClickDelete, handleClickEdit, setPendingTasks
           style={{ display: "flex", alignItems: "center" }}
         >
           <input
-            onChange={handleCheckboxChange}
+            onClick={handleCheckboxChange}
             type="radio"
             id="checkBox"
             checked={isChecked}
-            style={{ margin: "0px", width:'20px' }}
+            readOnly
+            style={{ margin: "0px", width: "20px", ra }}
           />
         </label>
         {isEditing ? (
@@ -59,7 +61,7 @@ export function Task({ task, handleClickDelete, handleClickEdit, setPendingTasks
               height: "50px",
               border: "none",
               backgroundColor: "#e2e2e2",
-              outline:'none'
+              outline: "none",
             }}
           />
         ) : (
