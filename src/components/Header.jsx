@@ -3,7 +3,7 @@ export function Header({ tasks, setTasks, setPendingTasks, pendingTasks }) {
     event.preventDefault();
     let form = Object.fromEntries(new window.FormData(event.target));
     if(form.task === ''){return}
-    setTasks([...tasks, form.task]);
+    setTasks([form.task,...tasks ]);
     event.target.reset();
     setPendingTasks(pendingTasks+1);
   }

@@ -10,6 +10,7 @@ export function Footer({ setTasks, pendingTasks, setPendingTasks }) {
         display: "flex",
         justifyContent: "space-between",
         marginTop: "50px",
+        gap: "50px"
       }}
     >
       <p>You have {pendingTasks} pending tasks</p>

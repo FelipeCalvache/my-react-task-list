@@ -11,7 +11,7 @@ const [pendingTasks,setPendingTasks] = useState(0)
 
   return (
     <main
-      style={{ minWidth: "500px", border: "solid black 1px", padding: "50px" }}
+      style={{  border: "solid black 1px", padding: "50px" }}
     >
       <Header tasks={tasks} setTasks={setTasks} setPendingTasks={setPendingTasks} pendingTasks={pendingTasks} />
       <TasksList
