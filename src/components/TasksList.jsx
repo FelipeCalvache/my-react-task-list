@@ -3,12 +3,15 @@ import { Task } from "./Task";
 export function TasksList({ tasks, setTasks, setPendingTasks, pendingTasks }) {
 
   function handleClickDelete(taskName, isChecked) {
-    let resultAfterDeletion = tasks.filter((task) => task !== taskName);
+    let resultAfterDeletion = tasks.filter((task) => task.task !== taskName);
+    console.log(resultAfterDeletion)
     setTasks(resultAfterDeletion);
     isChecked ? '' : setPendingTasks(pendingTasks-1)
   }
 
   function handleClickEdit(editTask, task) {
+    console.log("editTask "+editTask)
+    console.log("task "+task)
     let index = tasks.indexOf(task);
     let newTasks = tasks.map((task, i) => (i === index ? editTask : task));
     setTasks(newTasks);
@@ -26,8 +29,8 @@ export function TasksList({ tasks, setTasks, setPendingTasks, pendingTasks }) {
     >
       {tasks.map((task) => (
         <Task
-          key={task}
-          task={task}
+          key={task.task}
+          task={task.task}
           handleClickEdit={handleClickEdit}
           handleClickDelete={handleClickDelete}
           setPendingTasks={setPendingTasks}

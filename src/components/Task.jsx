@@ -12,7 +12,6 @@ export function Task({
   const [isEditing, setIsEditing] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
 
-
   const handleCheckboxChange = () => {
     setIsChecked(!isChecked);
     isChecked
@@ -44,7 +43,7 @@ export function Task({
     >
       <form
         onSubmit={handleSubmit}
-        style={{ display: "flex", alignItems: "center", gap: "5px"}}
+        style={{ display: "flex", alignItems: "center", gap: "5px" }}
       >
         <label
           htmlFor="checkBox"
@@ -81,7 +80,7 @@ export function Task({
             style={{
               marginBottom: "20px",
               textDecoration: isChecked ? "line-through" : "",
-              maxWidth: '300px'
+              maxWidth: "300px",
             }}
           >
             {task}

@@ -1,9 +1,14 @@
 export function Header({ tasks, setTasks, setPendingTasks, pendingTasks }) {
+
+
   function handleSubmit(event) {
     event.preventDefault();
     let form = Object.fromEntries(new window.FormData(event.target));
+    form.active = true;
+    console.log(form)
     if(form.task === ''){return}
-    setTasks([form.task,...tasks ]);
+    setTasks([form,...tasks ]);
+    localStorage.setItem("tasks", JSON.stringify([form, ...tasks]));
     event.target.reset();
     setPendingTasks(pendingTasks+1);
   }

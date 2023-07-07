@@ -6,9 +6,8 @@ import { Header } from './components/Header'
 import { TasksList } from './components/TasksList'
 
 function App() {
-const [tasks, setTasks] = useState([])
-const [pendingTasks,setPendingTasks] = useState(0)
-
+const [tasks, setTasks] = useState((JSON.parse(localStorage.getItem("tasks"))) || [])
+const [pendingTasks, setPendingTasks] = useState(tasks.length);
   return (
     <main
       style={{  border: "solid black 1px", padding: "50px" }}

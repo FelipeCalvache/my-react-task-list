@@ -1,7 +1,8 @@
 export function Footer({ setTasks, pendingTasks, setPendingTasks }) {
-  function handleClick() {
+  function handleClickDeleteAll() {
     setTasks([]);
     setPendingTasks(0)
+    localStorage.clear()
   }
 
   return (
@@ -15,7 +16,7 @@ export function Footer({ setTasks, pendingTasks, setPendingTasks }) {
     >
       <p>You have {pendingTasks} pending tasks</p>
       <button
-        onClick={handleClick}
+        onClick={handleClickDeleteAll}
         style={{ backgroundColor: "#f82056", border: "none", outline:'none' }}
         
       >
