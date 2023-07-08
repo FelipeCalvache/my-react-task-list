@@ -4,7 +4,7 @@ export function Header({ tasks, setTasks, setPendingTasks, pendingTasks }) {
   function handleSubmit(event) {
     event.preventDefault();
     let form = Object.fromEntries(new window.FormData(event.target));
-    form.active = true;
+    form.active = false;
     console.log(form)
     if(form.task === ''){return}
     setTasks([form,...tasks ]);

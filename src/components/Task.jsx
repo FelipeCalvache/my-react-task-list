@@ -10,14 +10,25 @@ export function Task({
   pendingTasks,
 }) {
   const [isEditing, setIsEditing] = useState(false);
-  const [isChecked, setIsChecked] = useState(false);
+  const [isChecked, setIsChecked] = useState(task.active);
 
   const handleCheckboxChange = () => {
+    console.log(task)
+    let newTaskActive = {...task}
+    newTaskActive.active = !newTaskActive.active
+    console.log(newTaskActive)
+    handleClickEdit(newTaskActive, task)
+    toggleChecked()
+  };
+
+  function toggleChecked(){
     setIsChecked(!isChecked);
     isChecked
       ? setPendingTasks(pendingTasks + 1)
       : setPendingTasks(pendingTasks - 1);
-  };
+  }
+
+  
 
   function handleEdit() {
     setIsEditing(!isEditing);
@@ -26,9 +37,11 @@ export function Task({
   function handleSubmit(event) {
     event.preventDefault();
     let form = Object.fromEntries(new window.FormData(event.target));
-    handleClickEdit(form.editTask, task);
+    form.active = isChecked
+    handleClickEdit(form, task);
     setIsEditing(false);
   }
+
 
   return (
     <li
@@ -50,7 +63,7 @@ export function Task({
           style={{ display: "flex", alignItems: "center" }}
         >
           <input
-            onClick={handleCheckboxChange}
+            onClick={()=>handleCheckboxChange(isChecked)}
             type="radio"
             id="checkBox"
             checked={isChecked}
@@ -60,9 +73,9 @@ export function Task({
         </label>
         {isEditing ? (
           <input
-            name="editTask"
+            name="task"
             type="text"
-            defaultValue={task}
+            defaultValue={task.task}
             autoFocus
             style={{
               height: "58px",
@@ -83,7 +96,7 @@ export function Task({
               maxWidth: "300px",
             }}
           >
-            {task}
+            {task.task}
           </p>
         )}
       </form>
