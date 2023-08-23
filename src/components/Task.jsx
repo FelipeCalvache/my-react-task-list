@@ -93,7 +93,6 @@ export function Task({
             style={{
               marginBottom: "20px",
               textDecoration: isChecked ? "line-through" : "",
-              maxWidth: "300px",
             }}
           >
             {task.task}
