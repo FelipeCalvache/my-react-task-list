@@ -51,3 +51,4 @@ export function Header({ tasks, setTasks, setPendingTasks, pendingTasks }) {
     </nav>
   );
 }
+

@@ -3,22 +3,17 @@ import { Task } from "./Task";
 export function TasksList({ tasks, setTasks, setPendingTasks, pendingTasks }) {
 
   function handleClickDelete(task, isChecked) {
-    console.log(task)
+
     let resultAfterDeletion = tasks.filter((item) => item.task !== task.task);
-    console.log(resultAfterDeletion)
     setTasks(resultAfterDeletion);
     localStorage.setItem("tasks", JSON.stringify(resultAfterDeletion));
     isChecked ? '' : setPendingTasks(pendingTasks-1)
   }
 
   function handleClickEdit(editTask, task) {
-    console.log(editTask)
-    console.log(task)
     let index = tasks.findIndex(item => item.task === task.task);
-    console.log(index)
     let newTasks = [...tasks]
-    newTasks[index] = editTask 
-    console.log(newTasks)
+    newTasks[index] = editTask
     localStorage.setItem("tasks", JSON.stringify(newTasks))
     setTasks(newTasks);
   }
