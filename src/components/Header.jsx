@@ -15,7 +15,7 @@ export function Header({ tasks, setTasks, setPendingTasks, pendingTasks }) {
 
   return (
     <nav>
-      <h1 style={{ textAlign: "left" }}>Todo App</h1>
+      <h1 style={{ textAlign: "left" }}>Lista de tareas</h1>
       <form
         onSubmit={handleSubmit}
         style={{
