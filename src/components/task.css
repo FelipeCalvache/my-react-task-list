@@ -1,0 +1,113 @@
+.li-claro {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #e2e2e2;
+  border-radius: 8px;
+  padding: 0px 1.2em;
+}
+
+.form-claro {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.label-claro {
+  display: flex;
+  align-items: center;
+}
+
+.radio-button-claro {
+  margin: 0px;
+  width: 20px;
+}
+
+.input-text-claro {
+  /* height: 58px; */
+  border: none;
+  background-color: #e2e2e2;
+  outline: none;
+  font-size: 16px;
+  font-family: Inter, system-ui, Avenir, Helvetica Arial sans-serif;
+  font-style: italic;
+}
+
+.p-claro {
+  margin-bottom: 20px;
+  max-width: 300px;
+  color: rgb(9, 52, 90);
+}
+
+div {
+  display: flex;
+  gap: 10px;
+}
+
+.fi-edit-claro{
+ color:#7cb0ff ;
+ cursor: pointer;
+}
+
+.vsc-trash-claro{
+color:#f5636a ;
+cursor: pointer;
+}
+
+/* --------Dark theme------- */
+
+.li-oscuro {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #9b9b9b;
+  border-radius: 8px;
+  padding: 0px 1.2em;
+}
+
+.form-oscuro {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.label-oscuro {
+  display: flex;
+  align-items: center;
+}
+
+.radio-button-oscuro {
+  margin: 0px;
+  width: 20px;
+}
+
+.input-text-oscuro {
+  border: none;
+  background-color: #aaa7a7;
+  outline: none;
+  font-size: 16px;
+  font-family: Inter, system-ui, Avenir, Helvetica Arial sans-serif;
+  font-style: italic;
+  color:aliceblue;
+}
+
+.p-oscuro {
+  margin-bottom: 20px;
+  max-width: 300px;
+  color:aliceblue;
+}
+
+div {
+  display: flex;
+  gap: 10px;
+}
+
+.fi-edit-oscuro{
+ color:#a2c6fc ;
+ cursor: pointer;
+}
+
+.vsc-trash-oscuro{
+color:#ff9a9f ;
+cursor: pointer;
+}

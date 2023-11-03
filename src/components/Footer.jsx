@@ -1,24 +1,21 @@
+import { useContext } from "react";
+import "./footer.css";
+import { ThemeContext } from "../context/themeContext";
 export function Footer({ setTasks, pendingTasks, setPendingTasks }) {
   function handleClickDeleteAll() {
     setTasks([]);
-    setPendingTasks(0)
-    localStorage.clear()
+    setPendingTasks(0);
+    localStorage.clear();
   }
 
+  const {theme} = useContext(ThemeContext)
+
   return (
-    <footer
-      style={{
-        display: "flex",
-        justifyContent: "space-between",
-        marginTop: "50px",
-        gap: "50px"
-      }}
-    >
+    <footer className={`footer-${theme}`}>
       <p>You have {pendingTasks} pending tasks</p>
       <button
+        className={`footer-button-${theme}`}
         onClick={handleClickDeleteAll}
-        style={{ backgroundColor: "#f82056", border: "none", outline:'none' }}
-        
       >
         Clear all
       </button>

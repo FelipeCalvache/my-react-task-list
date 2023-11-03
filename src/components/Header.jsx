@@ -1,53 +1,57 @@
+import { useContext, useState } from "react";
+import "./header.css";
+import { ThemeContext } from "../context/themeContext";
 export function Header({ tasks, setTasks, setPendingTasks, pendingTasks }) {
-
-
   function handleSubmit(event) {
     event.preventDefault();
     let form = Object.fromEntries(new window.FormData(event.target));
     form.active = false;
-    console.log(form)
-    if(form.task === ''){return}
-    setTasks([form,...tasks ]);
+    if (form.task === "") {
+      return;
+    }
+    setTasks([form, ...tasks]);
     localStorage.setItem("tasks", JSON.stringify([form, ...tasks]));
     event.target.reset();
-    setPendingTasks(pendingTasks+1);
+    setPendingTasks(pendingTasks + 1);
+  }
+
+  const [lightEmoji, setLightEmoji] = useState("☀️");
+
+  const { theme, setTheme } = useContext(ThemeContext);
+  console.log(theme);
+
+  function handleClick() {
+    const toggleTheme = theme === "claro" ? "oscuro" : "claro";
+    const toggleEmoji = lightEmoji === "☀️" ? "🌙" : "☀️";
+    setLightEmoji(toggleEmoji);
+    setTheme(toggleTheme);
   }
 
   return (
-    <nav>
-      <h1 style={{ textAlign: "left" }}>Todo App</h1>
-      <form
-        onSubmit={handleSubmit}
+    <header>
+      <div
         style={{
-          height: "50px",
           display: "flex",
-          justifyContent: "stretch",
           alignItems: "center",
-          gap: "10px",
-          //   border:'solid'
+          justifyContent:'space-between'
         }}
       >
+        <h1 className={`h1-${theme}`}>Todo App</h1>
+        <div id="toggle" onClick={handleClick}>
+          {lightEmoji}
+        </div>
+      </div>
+      <form className={`form-${theme}`} onSubmit={handleSubmit}>
         <input
+          className={`input-${theme}`}
           name="task"
           placeholder="Add your new todo"
-
-          style={{
-            height: "100%",
-            width: "100%",
-            border: "solid 1px #e2e2e2",
-            borderRadius: "8px",
-            padding: "0px 1.2em",
-            display: "block",
-            outline: "none",
-          }}
+          autoFocus={false}
         ></input>
-        <button
-          type="submit"
-          style={{ height: "100%", backgroundColor: "#08ebfc", outline:'none' }}
-        >
+        <button className={`button-${theme}`} type="submit">
           +
         </button>
       </form>
-    </nav>
+    </header>
   );
 }

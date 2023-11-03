@@ -1,6 +1,8 @@
 import { VscTrash } from "react-icons/vsc";
 import { FiEdit } from "react-icons/fi";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import './task.css'
+import { ThemeContext } from "../context/themeContext";
 
 export function Task({
   task,
@@ -42,72 +44,45 @@ export function Task({
     setIsEditing(false);
   }
 
+const {theme} = useContext(ThemeContext)
 
   return (
-    <li
-      style={{
-        display: "flex",
-        justifyContent: "space-between",
-        alignItems: "center",
-        backgroundColor: "#e2e2e2",
-        borderRadius: "8px",
-        padding: "0px 1.2em",
-      }}
-    >
-      <form
-        onSubmit={handleSubmit}
-        style={{ display: "flex", alignItems: "center", gap: "5px" }}
-      >
-        <label
-          htmlFor="checkBox"
-          style={{ display: "flex", alignItems: "center" }}
-        >
+    <li className={`li-${theme}`}>
+      <form className={`form-${theme}`} onSubmit={handleSubmit}>
+        <label className={`label-${theme}`} htmlFor="checkBox">
           <input
-            onClick={()=>handleCheckboxChange(isChecked)}
+            className={`radio-button-${theme}`}
+            onClick={() => handleCheckboxChange(isChecked)}
             type="radio"
             id="checkBox"
             checked={isChecked}
             readOnly
-            style={{ margin: "0px", width: "20px" }}
           />
         </label>
         {isEditing ? (
           <input
+            className={`input-text-${theme}`}
             name="task"
             type="text"
             defaultValue={task.task}
             autoFocus
-            style={{
-              height: "58px",
-              border: "none",
-              backgroundColor: "#e2e2e2",
-              outline: "none",
-              fontSize: "16px",
-              fontFamily:
-                "Inter, system-ui, Avenir, Helvetica, Arial, sans-serif",
-              fontStyle: "italic",
-            }}
           />
         ) : (
           <p
+            className={`p-${theme}`}
             style={{
-              marginBottom: "20px",
               textDecoration: isChecked ? "line-through" : "",
-              maxWidth: "300px",
             }}
           >
             {task.task}
           </p>
         )}
       </form>
-      <div style={{ display: "flex", gap: "10px" }}>
-        <FiEdit
-          onClick={handleEdit}
-          style={{ color: "#7cb0ff", cursor: "pointer" }}
-        />
+      <div>
+        <FiEdit className={`fi-edit-${theme}`} onClick={handleEdit} />
         <VscTrash
+          className={`vsc-trash-${theme}`}
           onClick={() => handleClickDelete(task, isChecked)}
-          style={{ color: "#f5636a", cursor: "pointer" }}
         />
       </div>
     </li>

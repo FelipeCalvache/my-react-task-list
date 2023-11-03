@@ -1,7 +1,28 @@
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
 }
 
+.main-claro {
+  width: 100vw;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  background: radial-gradient(circle,#c0c0aa,#1cefff  );
+
+}
+
+/* --------Dark theme------- */
+
+.main-oscuro {
+  width: 100vw;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  background: radial-gradient(circle,#5e5e4e,#073133  );
+  
+}

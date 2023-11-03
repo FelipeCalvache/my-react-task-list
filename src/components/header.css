@@ -1,0 +1,88 @@
+header{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.h1-claro {
+  color: rgb(9, 52, 90);
+  margin: 0;
+}
+
+#toggle{
+  border-radius: 50%;
+  /* border: solid red; */
+  width: 50px;
+  height: 50px;
+  font-size: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-claro {
+  height: 50px;
+  display: flex;
+  justify-content: stretch;
+  align-items: center;
+  gap: 10px;
+}
+
+.input-claro {
+  height: 100%;
+  width: 100%;
+  border: solid 1px #e2e2e2;
+  border-radius: 8px;
+  padding: 0px 1.2em;
+  display: block;
+  outline: none;
+}
+
+
+
+.button-claro {
+  height: 100%;
+  background-color: #08ebfc;
+  outline: none;
+}
+
+/* --------Dark theme------- */
+.h1-oscuro {
+  color: aliceblue;
+  margin: 0;
+
+}
+
+#toggle{
+  border-radius: 50%;
+}
+
+.form-oscuro {
+  height: 50px;
+  display: flex;
+  justify-content: stretch;
+  align-items: center;
+  gap: 10px;
+}
+
+.input-oscuro {
+  height: 100%;
+  width: 100%;
+  border: solid 1px rgb(100, 93, 93);
+  border-radius: 8px;
+  padding: 0px 1.2em;
+  display: block;
+  outline: none;
+  background-color: rgb(100, 93, 93);
+  color: aliceblue;
+}
+
+.input-oscuro::placeholder{
+ color: aliceblue;
+}
+
+.button-oscuro {
+  height: 100%;
+  background-color: #0e565a;
+  outline: none;
+  color: aliceblue;
+}

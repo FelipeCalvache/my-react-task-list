@@ -1,0 +1,30 @@
+.footer-claro {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 50px;
+  gap: 50px;
+  color: rgb(9, 52, 90)
+}
+
+.footer-button-claro {
+  background-color: #f82056;
+  border: none;
+  outline: none;
+}
+
+/* --------Dark theme------- */
+
+.footer-oscuro {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 50px;
+  gap: 50px;
+  color: aliceblue;
+}
+
+.footer-button-oscuro {
+  background-color: #8f0024;
+  border: none;
+  outline: none;
+  color: aliceblue;
+}

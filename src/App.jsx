@@ -1,32 +1,28 @@
-
-import { useState } from 'react';
-import './App.css'
-import { Footer } from './components/Footer';
-import { Header } from './components/Header'
-import { TasksList } from './components/TasksList'
+import { useState } from "react";
+import "./App.css";
+import { Container } from "./components/Container";
+import { ThemeContext } from "./context/themeContext";
 
 function App() {
-const [tasks, setTasks] = useState((JSON.parse(localStorage.getItem("tasks"))) || [])
-const [pendingTasks, setPendingTasks] = useState(tasks.length);
+  const [tasks, setTasks] = useState(
+    JSON.parse(localStorage.getItem("tasks")) || []
+  );
+  const [pendingTasks, setPendingTasks] = useState(tasks.length);
+
+  const [theme, setTheme] = useState("claro");
 
   return (
-    <main
-      style={{  border: "solid black 1px", padding: "50px" }}
-    >
-      <Header tasks={tasks} setTasks={setTasks} setPendingTasks={setPendingTasks} pendingTasks={pendingTasks} />
-      <TasksList
-        tasks={tasks}
-        setTasks={setTasks}
-        setPendingTasks={setPendingTasks}
-        pendingTasks={pendingTasks}
-      />
-      <Footer
-        setTasks={setTasks}
-        pendingTasks={pendingTasks}
-        setPendingTasks={setPendingTasks}
-      />
-    </main>
-  ); 
+    <ThemeContext.Provider value={{ theme, setTheme }}>
+      <main className={`main-${theme}`}>
+        <Container
+          tasks={tasks}
+          setTasks={setTasks}
+          pendingTasks={pendingTasks}
+          setPendingTasks={setPendingTasks}
+        />
+      </main>
+    </ThemeContext.Provider>
+  );
 }
 
-export default App
+export default App;
