@@ -1,7 +1,7 @@
 import { VscTrash } from "react-icons/vsc";
 import { FiEdit } from "react-icons/fi";
 import { useContext, useState } from "react";
-import './task.css'
+import "./task.css";
 import { ThemeContext } from "../context/themeContext";
 
 export function Task({
@@ -15,22 +15,19 @@ export function Task({
   const [isChecked, setIsChecked] = useState(task.active);
 
   const handleCheckboxChange = () => {
-    console.log(task)
-    let newTaskActive = {...task}
-    newTaskActive.active = !newTaskActive.active
-    console.log(newTaskActive)
-    handleClickEdit(newTaskActive, task)
-    toggleChecked()
+    let newTaskActive = { ...task };
+    newTaskActive.active = !newTaskActive.active;
+    console.log(newTaskActive);
+    handleClickEdit(newTaskActive, task);
+    toggleChecked();
   };
 
-  function toggleChecked(){
+  function toggleChecked() {
     setIsChecked(!isChecked);
     isChecked
       ? setPendingTasks(pendingTasks + 1)
       : setPendingTasks(pendingTasks - 1);
   }
-
-  
 
   function handleEdit() {
     setIsEditing(!isEditing);
@@ -39,12 +36,12 @@ export function Task({
   function handleSubmit(event) {
     event.preventDefault();
     let form = Object.fromEntries(new window.FormData(event.target));
-    form.active = isChecked
+    form.active = isChecked;
     handleClickEdit(form, task);
     setIsEditing(false);
   }
 
-const {theme} = useContext(ThemeContext)
+  const { theme } = useContext(ThemeContext);
 
   return (
     <li className={`li-${theme}`}>

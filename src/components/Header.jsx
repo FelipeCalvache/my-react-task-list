@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import "./header.css";
 import { ThemeContext } from "../context/themeContext";
+
 export function Header({ tasks, setTasks, setPendingTasks, pendingTasks }) {
   function handleSubmit(event) {
     event.preventDefault();
@@ -18,13 +19,12 @@ export function Header({ tasks, setTasks, setPendingTasks, pendingTasks }) {
   const [lightEmoji, setLightEmoji] = useState("☀️");
 
   const { theme, setTheme } = useContext(ThemeContext);
-  console.log(theme);
 
   function handleClick() {
     const toggleTheme = theme === "claro" ? "oscuro" : "claro";
     const toggleEmoji = lightEmoji === "☀️" ? "🌙" : "☀️";
     setLightEmoji(toggleEmoji);
-    setTheme(toggleTheme);
+    setTheme(toggleTheme)
   }
 
   return (
@@ -33,7 +33,7 @@ export function Header({ tasks, setTasks, setPendingTasks, pendingTasks }) {
         style={{
           display: "flex",
           alignItems: "center",
-          justifyContent:'space-between'
+          justifyContent: "space-between",
         }}
       >
         <h1 className={`h1-${theme}`}>Todo App</h1>
@@ -55,4 +55,3 @@ export function Header({ tasks, setTasks, setPendingTasks, pendingTasks }) {
     </header>
   );
 }
-
