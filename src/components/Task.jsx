@@ -17,7 +17,6 @@ export function Task({
   const handleCheckboxChange = () => {
     let newTaskActive = { ...task };
     newTaskActive.active = !newTaskActive.active;
-    console.log(newTaskActive);
     handleClickEdit(newTaskActive, task);
     toggleChecked();
   };
@@ -61,7 +60,7 @@ export function Task({
             className={`input-text-${theme}`}
             name="task"
             type="text"
-            defaultValue={task.task}
+            defaultValue={task.name}
             autoFocus
           />
         ) : (
@@ -71,7 +70,7 @@ export function Task({
               textDecoration: isChecked ? "line-through" : "",
             }}
           >
-            {task.task}
+            {task.name}
           </p>
         )}
       </form>

@@ -28,9 +28,9 @@ export function TasksList({ tasks, setTasks, setPendingTasks, pendingTasks }) {
         gap: "10px",
       }}
     >
-      {tasks.map((item) => (
+      {tasks?.map((item) => (
         <Task
-          key={item.task}
+          key={item.id}
           task={item}
           handleClickEdit={handleClickEdit}
           handleClickDelete={handleClickDelete}

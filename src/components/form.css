@@ -1,14 +1,33 @@
-/* form {
+.form-container-claro {
   height: 100vh;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 20px;
   background: radial-gradient(circle, #c0c0aa, #1cefff);
+}
+
+.form2-claro {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+  align-items: center;
+  gap: 10px;
+  font-size: 25px;
+  color: rgb(9, 52, 90);
+}
+
+.input2-claro {
+  width: 50%;
+  height: 50px;
+  border: solid 1px #e2e2e2;
+  border-radius: 8px;
+  padding: 0px 1em;
+  display: block;
+  outline: none;
 }
 
 .button-claro {
   background-color: #08ebfc;
   outline: none;
-} */
+}

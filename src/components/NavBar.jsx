@@ -5,7 +5,6 @@ import { ThemeContext } from "../context/themeContext";
 
 export function NavBar() {
   const { theme } = useContext(ThemeContext);
-  console.log(theme);
   return (
     <div className={`nav-bar-${theme}`}>
       <ul className={`nav-bar-options-${theme}`}>

@@ -3,6 +3,7 @@ import "./header.css";
 import { ThemeContext } from "../context/themeContext";
 
 export function Header({ tasks, setTasks, setPendingTasks, pendingTasks }) {
+
   function handleSubmit(event) {
     event.preventDefault();
     let form = Object.fromEntries(new window.FormData(event.target));
@@ -11,7 +12,6 @@ export function Header({ tasks, setTasks, setPendingTasks, pendingTasks }) {
       return;
     }
     setTasks([form, ...tasks]);
-    localStorage.setItem("tasks", JSON.stringify([form, ...tasks]));
     event.target.reset();
     setPendingTasks(pendingTasks + 1);
   }
