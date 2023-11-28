@@ -3,7 +3,6 @@ import { Task } from "./Task";
 export function TasksList({ tasks, setTasks, setPendingTasks, pendingTasks }) {
 
   function handleClickDelete(task, isChecked) {
-
     let resultAfterDeletion = tasks.filter((item) => item.task !== task.task);
     setTasks(resultAfterDeletion);
     localStorage.setItem("tasks", JSON.stringify(resultAfterDeletion));

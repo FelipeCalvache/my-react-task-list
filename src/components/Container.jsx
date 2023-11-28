@@ -22,7 +22,8 @@ export const Container = () => {
       .then((response) => response.json())
       .then((data) => {
         setTasks(data)
-        setPendingTasks(tasks.length);
+        setPendingTasks(data.length)
+        console.log(data.length);
       })
       .catch((error) => {
         console.error(error);
